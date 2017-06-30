@@ -1,5 +1,7 @@
 # Puppet::Examples::Helpers
 
+[![Build Status](https://travis-ci.org/coi-gov-pl/puppet-examples-helpers.svg?branch=develop)](https://travis-ci.org/coi-gov-pl/puppet-examples-helpers)
+
 Helpers to utilize puppet example files.
 
 Using new `example` method you can read and execute example file provided in puppet modules in accetance tests.
