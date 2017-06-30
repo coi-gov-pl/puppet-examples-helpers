@@ -15,4 +15,43 @@ RSpec.describe Puppet::Examples::Helpers do
       it { is_expected.to be =~ gversion }
     end
   end
+
+  describe '#example()' do
+    include Puppet::Examples::Helpers
+
+    def in_fake_stderr
+      original_stderr = $stderr
+      $stderr = StringIO.new
+      yield
+      $stderr.string
+    ensure
+      $stderr = original_stderr
+    end
+
+    subject { example examplefile }
+
+    context 'given no parameter' do
+      let(:examplefile) { nil }
+      it { in_fake_stderr { is_expected.to eq("debug('an main init.pp')\n") } }
+      it { expect { subject }.to output("Reading example manifest 'examples/init.pp'\n").to_stderr }
+    end
+
+    context 'given "::modulename"' do
+      let(:examplefile) { '::modulename' }
+      it { in_fake_stderr { is_expected.to eq("debug('an main init.pp')\n") } }
+      it { expect { subject }.to output("Reading example manifest 'examples/init.pp'\n").to_stderr }
+    end
+
+    context 'given "::modulename::sub::showoff"' do
+      let(:examplefile) { '::modulename::sub::showoff' }
+      it { in_fake_stderr { is_expected.to eq("debug('just to show off')\n") } }
+      it { expect { subject }.to output("Reading example manifest 'examples/sub/showoff.pp'\n").to_stderr }
+    end
+
+    context 'given "modulename::sample"' do
+      let(:examplefile) { 'modulename::sample' }
+      it { in_fake_stderr { is_expected.to eq("info('sample file')\n") } }
+      it { expect { subject }.to output("Reading example manifest 'examples/sample.pp'\n").to_stderr }
+    end
+  end
 end

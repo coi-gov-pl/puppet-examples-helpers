@@ -6,7 +6,7 @@ Using new `example` method you can read and execute example file provided in pup
 
 ```ruby
 # Sets code to contents of examples/init.pp file
-let(:code) { example 'init.pp' }
+let(:code) { example '::modulename' }
 ```
 
 ## Installation
@@ -55,9 +55,9 @@ end
 # an acceptance test
 require 'spec_helper_acceptance'
 
-describe '::jboss', unless: UNSUPPORTED_PLATFORMS.include?(fact('osfamily')) do
-  # Reads examples/init.pp file
-  let(:code) { example('init.pp') }
+describe '::jboss::internal::service', unless: UNSUPPORTED_PLATFORMS.include?(fact('osfamily')) do
+  # Reads examples/internal/package.pp file
+  let(:code) { example '::jboss::internal::service' }
 
   it 'should work with no errors' do
     result = apply_manifest(code, catch_failures: true)

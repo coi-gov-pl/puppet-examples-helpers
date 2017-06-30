@@ -1,3 +1,15 @@
+def gem_present(name)
+  !Bundler.rubygems.find_name(name).empty?
+end
+
+if gem_present 'simplecov'
+  require 'simplecov'
+  SimpleCov.start
+  SimpleCov.refuse_coverage_drop
+end
+
+require 'pry' if gem_present 'pry'
+
 require 'bundler/setup'
 require 'puppet/examples/helpers'
 

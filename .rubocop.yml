@@ -13,3 +13,6 @@ Style/FileName:
     - 'Gemfile'
     - 'Rakefile'
     - '*.gemspec'
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*_spec.rb'

@@ -32,5 +32,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler', '~> 1.15'
   spec.add_development_dependency 'rake', '~> 10'
   spec.add_development_dependency 'rspec', '~> 3'
+  spec.add_development_dependency 'simplecov', '~> 0.14.1'
+  spec.add_development_dependency 'pry-byebug', '~> 3.4', '>= 3.4.2' if req('>= 2.0') =~ RVERSION
   spec.add_development_dependency 'rubocop', '~> 0.49' if req('>= 2.0') =~ RVERSION
 end
