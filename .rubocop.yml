@@ -12,3 +12,4 @@ Style/FileName:
   Exclude:
     - 'Gemfile'
     - 'Rakefile'
+    - '*.gemspec'
