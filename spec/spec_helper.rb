@@ -4,7 +4,10 @@ end
 
 if gem_present 'simplecov'
   require 'simplecov'
-  SimpleCov.start
+  SimpleCov.start do
+    add_filter '/spec/'
+    add_filter '/vendor/'
+  end
   SimpleCov.refuse_coverage_drop
 end
 

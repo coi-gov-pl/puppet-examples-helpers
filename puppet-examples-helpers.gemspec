@@ -4,12 +4,6 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'puppet/examples/helpers/version'
 
-RVERSION = Gem::Version.new(RUBY_VERSION.dup)
-
-def req(req_s)
-  Gem::Requirement.new(req_s)
-end
-
 Gem::Specification.new do |spec|
   spec.name          = 'puppet-examples-helpers'
   spec.version       = Puppet::Examples::Helpers::VERSION
@@ -28,11 +22,7 @@ Gem::Specification.new do |spec|
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
+  spec.required_ruby_version = '>= 1.9.0'
 
   spec.add_development_dependency 'bundler', '~> 1.15'
-  spec.add_development_dependency 'rake', '~> 10'
-  spec.add_development_dependency 'rspec', '~> 3'
-  spec.add_development_dependency 'simplecov', '~> 0.14.1'
-  spec.add_development_dependency 'pry-byebug', '~> 3.4', '>= 3.4.2' if req('>= 2.0') =~ RVERSION
-  spec.add_development_dependency 'rubocop', '~> 0.49' if req('>= 2.0') =~ RVERSION
 end
