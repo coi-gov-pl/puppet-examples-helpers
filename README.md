@@ -1,6 +1,6 @@
 # PuppetExamplesHelpers
 
-[![Build Status](https://travis-ci.org/coi-gov-pl/puppet-examples-helpers.svg?branch=develop)](https://travis-ci.org/coi-gov-pl/puppet-examples-helpers)
+[![Build Status](https://travis-ci.org/coi-gov-pl/puppet-examples-helpers.svg?branch=develop)](https://travis-ci.org/coi-gov-pl/puppet-examples-helpers) [![Gem](https://img.shields.io/gem/v/puppet-examples-helpers.svg)](https://rubygems.org/gems/puppet-examples-helpers)
 
 Helpers to utilize puppet example files.
 
