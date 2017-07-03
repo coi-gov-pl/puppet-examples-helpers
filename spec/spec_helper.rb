@@ -14,7 +14,7 @@ end
 require 'pry' if gem_present 'pry'
 
 require 'bundler/setup'
-require 'puppet/examples/helpers'
+require 'puppet-examples-helpers'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

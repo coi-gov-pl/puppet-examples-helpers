@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-RSpec.describe Puppet::Examples::Helpers do
+RSpec.describe PuppetExamplesHelpers do
   describe '::VERSION' do
-    let(:version) { Puppet::Examples::Helpers::VERSION }
+    let(:version) { PuppetExamplesHelpers::VERSION }
     context 'as String' do
       subject { version }
       it { is_expected.not_to be nil }
@@ -17,7 +17,7 @@ RSpec.describe Puppet::Examples::Helpers do
   end
 
   describe '#example()' do
-    include Puppet::Examples::Helpers
+    include PuppetExamplesHelpers
 
     def in_fake_stderr
       original_stderr = $stderr

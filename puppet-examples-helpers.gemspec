@@ -2,11 +2,11 @@
 
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'puppet/examples/helpers/version'
+require 'puppet-examples-helpers/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'puppet-examples-helpers'
-  spec.version       = Puppet::Examples::Helpers::VERSION
+  spec.version       = PuppetExamplesHelpers::VERSION
   spec.authors       = ['Suszyński Krzysztof']
   spec.email         = ['krzysztof.suszynski@coi.gov.pl']
 

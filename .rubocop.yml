@@ -13,6 +13,8 @@ Style/FileName:
     - 'Gemfile'
     - 'Rakefile'
     - '*.gemspec'
+    - lib/puppet-examples-helpers.rb
+    - spec/puppet-examples-helpers_spec.rb
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*_spec.rb'
