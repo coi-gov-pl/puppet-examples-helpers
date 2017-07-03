@@ -1,4 +1,6 @@
-# Puppet::Examples::Helpers
+# PuppetExamplesHelpers
+
+[![Build Status](https://travis-ci.org/coi-gov-pl/puppet-examples-helpers.svg?branch=develop)](https://travis-ci.org/coi-gov-pl/puppet-examples-helpers)
 
 Helpers to utilize puppet example files.
 
@@ -6,7 +8,7 @@ Using new `example` method you can read and execute example file provided in pup
 
 ```ruby
 # Sets code to contents of examples/init.pp file
-let(:code) { example 'init.pp' }
+let(:code) { example '::modulename' }
 ```
 
 ## Installation
@@ -30,13 +32,15 @@ Or install it yourself as:
 
 ## Usage
 
+### RSpec Acceptance Helper
+
 ```ruby
-# spec_helper_acceptance.rb
+# file: spec/spec_helper_acceptance.rb
 require 'puppet'
 require 'beaker-rspec'
 require 'beaker/puppet_install_helper'
 require 'beaker/module_install_helper'
-require_relative './acceptance_helpers'
+require 'puppet-examples-helpers'
 
 UNSUPPORTED_PLATFORMS = %w[Suse windows AIX Solaris].freeze
 
@@ -45,19 +49,21 @@ install_module
 install_module_dependencies
 
 RSpec.configure do |c|
-  c.include Puppet::Examples::Helpers
+  c.include PuppetExamplesHelpers
 
   c.formatter = :documentation
 end
 ```
 
+### Acceptance Test Example
+
 ```ruby
-# an acceptance test
+# file: spec/acceptance/jboss/internal/service_spec.rb
 require 'spec_helper_acceptance'
 
-describe '::jboss', unless: UNSUPPORTED_PLATFORMS.include?(fact('osfamily')) do
-  # Reads examples/init.pp file
-  let(:code) { example('init.pp') }
+describe '::jboss::internal::service', unless: UNSUPPORTED_PLATFORMS.include?(fact('osfamily')) do
+  # Reads examples/internal/service.pp file
+  let(:code) { example '::jboss::internal::service' }
 
   it 'should work with no errors' do
     result = apply_manifest(code, catch_failures: true)

@@ -1,5 +1,20 @@
+def gem_present(name)
+  !Bundler.rubygems.find_name(name).empty?
+end
+
+if gem_present 'simplecov'
+  require 'simplecov'
+  SimpleCov.start do
+    add_filter '/spec/'
+    add_filter '/vendor/'
+  end
+  SimpleCov.refuse_coverage_drop
+end
+
+require 'pry' if gem_present 'pry'
+
 require 'bundler/setup'
-require 'puppet/examples/helpers'
+require 'puppet-examples-helpers'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
